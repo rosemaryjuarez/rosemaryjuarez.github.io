@@ -4,13 +4,34 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "i am rosemary"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "rosemaryjuarez.github.io",
+    "title": "Rosemary Juarez",
     "section": "",
-    "text": "My first Website\nHi this is rosemary!"
+    "text": "Rosemary is a working towards a Master of Environmental Data Science (Expected June 2024)"
+  },
+  {
+    "objectID": "index.html#things-i-like",
+    "href": "index.html#things-i-like",
+    "title": "Rosemary Juarez",
+    "section": "things i like:",
+    "text": "things i like:\n\nrats\nshojo manga\nrats\nyoutube\ntrack and field sports\nrats\nhot cheetos\nlegend of zelda\nrats"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Rosemary Juarez",
+    "section": "Education",
+    "text": "Education\nUniversity of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul MA B.A in Economics | Sept 2007 - June 2011"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Rosemary Juarez",
+    "section": "Experience",
+    "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Spet 2012 - April 2018"
   }
 ]
