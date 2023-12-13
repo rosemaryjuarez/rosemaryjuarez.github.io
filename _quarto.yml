@@ -3,12 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "rosemaryjuarez.github.io"
+  title: ""
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - blog_settings.qmd
+      - href: resources.qmd
+        text: Resources
 
 format:
   html:

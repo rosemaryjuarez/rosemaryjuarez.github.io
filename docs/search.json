@@ -2,9 +2,23 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "about me",
     "section": "",
-    "text": "i am rosemary"
+    "text": "about me"
+  },
+  {
+    "objectID": "about.html#section",
+    "href": "about.html#section",
+    "title": "about me",
+    "section": "",
+    "text": "about me"
+  },
+  {
+    "objectID": "blog_settings.html",
+    "href": "blog_settings.html",
+    "title": "blog",
+    "section": "",
+    "text": "this is the start of my first blog post\n\n\n\n\n\n\n\n\n\n\n\n\nMy first blog post\n\n\n\nQuarto\n\n\nMEDS\n\n\nWorkshop\n\n\n\nThis is my short description\n\n\n\nRosemary Juarez\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -35,17 +49,10 @@
     "text": "things i like:\n\nrats\nshojo manga\nrats\nyoutube\ntrack and field sports\nrats\nhot cheetos\nlegend of zelda\nrats"
   },
   {
-    "objectID": "resources.html#title-all",
-    "href": "resources.html#title-all",
-    "title": "rosemaryjuarez.github.io",
-    "section": "title : ‘all’",
-    "text": "title : ‘all’"
-  },
-  {
     "objectID": "resources.html",
     "href": "resources.html",
-    "title": "rosemaryjuarez.github.io",
+    "title": "cool resources!",
     "section": "",
-    "text": "title : ‘cool resources!’\n\ntheres nothing so far"
+    "text": "theres nothing so far, but its okay"
   }
 ]

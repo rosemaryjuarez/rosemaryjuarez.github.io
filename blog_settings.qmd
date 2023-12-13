@@ -1,0 +1,10 @@
+---
+title: "blog"
+listing:
+  contents: blog
+  type: grid
+  sort: 'data desc'
+  categories: true
+---
+
+this is the start of my first blog post

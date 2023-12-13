@@ -1,5 +1,7 @@
 ---
-title: "About"
+title: "about me"
 ---
 
-i am rosemary
+## 
+
+about me\

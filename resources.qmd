@@ -1,7 +1,6 @@
 ---
-
 title : 'cool resources!'
 
 ---
 
-theres nothing so far
+theres nothing so far, but its okay
