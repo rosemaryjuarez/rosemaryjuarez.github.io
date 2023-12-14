@@ -151,7 +151,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#geographical-context-of-data" id="toc-geographical-context-of-data" class="nav-link" data-scroll-target="#geographical-context-of-data">Geographical context of data</a></li>
   <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">analysis</a></li>
-  <li><a href="#final-output" id="toc-final-output" class="nav-link" data-scroll-target="#final-output">Final Output</a></li>
+  <li><a href="#final-output" id="toc-final-output" class="nav-link" data-scroll-target="#final-output">Final Output</a>
+  <ul class="collapse">
+  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -176,10 +179,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Author: Rosemary Juarez</p>
-<p>Link to github repo: https://github.com/rosemaryjuarez/eds-220-hw4-task3</p>
+<p>Link to github repo: <a href="https://github.com/rosemaryjuarez/eds-220-hw4-task3">github repo</a></p>
 <section id="purpose" class="level2">
 <h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p>In December of 2017, The Thomas fire burned throughout Santa Barbara and Ventura county, creating distress and destructing in its wake. My interest in collecting the air quality during this time can shed light on the correlation between wildfires and air quality. I want to investigate how the Thomas Fire impacted the AQI in Santa Barbara county using public data provided by US Environmental Protection Agency.</p>
+<p>In December of 2017, The Thomas fire burned throughout Santa Barbara and Ventura county, creating distress and destructing in its wake. This wildfire was one of multiple wildfires occuring in California, making this a hotter topic throughout the years. As a native Ventura county resident, I have seen the effects this wildfire has caused in the community. Not only did I have to miss school, but my parents and I were forced to shelter indoors as the air quality grew worse. With the sky burning blood red for a few days, and smoke hazes filling up the streets of Oxnard, my curiosity grew more. Now that I have a chance to explore what exactly was going due to having data science experience, I can now vizualize the Thomas’s fire impact through air quality. My interest in collecting the air quality during this time can shed light on the correlation between wildfires and air quality. I want to investigate how the Thomas Fire impacted the AQI in Santa Barbara county using public data provided by US Environmental Protection Agency.</p>
 </section>
 <section id="highlights" class="level2">
 <h2 class="anchored" data-anchor-id="highlights">Highlights:</h2>
@@ -195,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="dataset-description">Dataset Description</h2>
 <ul>
 <li><h3 id="landsat-8-imagery" class="anchored">Landsat 8 imagery:</h3>
-<p>For raster data, this originated from NASA’s Earth Observatory. The landsat imagery has a collection of bands (red, green, blue, near-infrared and shortwave infrared) from the Landsat Collection 2 Level-2 atmosperically corrected surface reflectance data, collected by the Landsat 8 satellite.</p></li>
+<p>For raster data, this originated from NASA’s Earth Observatory. The landsat imagery has a collection of bands (red, green, blue, near-infrared and shortwave infrared) from the Landsat Collection 2 Level-2 atmosperically corrected surface reflectance data, collected by the Landsat 8 satellite. the landsat imagery used in this report is post-2017</p></li>
 <li><h3 id="thomas-fire-perimeter" class="anchored">Thomas Fire Perimeter:</h3>
 <p>For our Vector data, the Thomas fire perimeter polygon came from the CA State Geoportal, which comes with multiple fire perimeters.</p></li>
 <li><h3 id="air-quality-index" class="anchored">Air Quality Index</h3>
@@ -203,15 +206,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="references-to-datasets" class="level3">
 <h3 class="anchored" data-anchor-id="references-to-datasets">References to datasets</h3>
-<p>Landsat 8 imagery: https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2</p>
-<p>Thomas Fire Perimeter: https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/about</p>
-<p>AQI: https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI</p>
+<p>Landsat 8 imagery: <a href="https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2">https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2</a></p>
+<p>Thomas Fire Perimeter: <a href="https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/about">https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/about</a></p>
+<p>AQI: <a href="https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI">https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI</a></p>
 </section>
 </section>
 <section id="importing-data" class="level1">
 <h1>Importing Data</h1>
-<p>We will first focus on importing all necessary data required for running this report. We must first import all important packages required to read and run the datasets.</p>
-<div class="cell" data-tags="[]" data-execution_count="15">
+<p>We will first focus on importing all necessary data required for running this report. We must first import all important packages required to read and run the datasets. There will be a combination of vector and raster data.</p>
+<div class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing all neccessary packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -251,7 +254,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="geographical-context-of-data" class="level1">
 <h1>Geographical context of data</h1>
 <p>Since We are primarily exploring Santa Barbara county, our focus should be in this region. In the case of our landsat imagery, we are given a wide 30m x 30m pixel dimension of our area, giving us a relatively good spatial resolution for the area we are interested. As for the fire perimeter, we will need to filter our data to only include the Thomas fire. This will show us only the fire perimeter of Thomas fire, which includes SB and Ventura county. Our AQI data is not spatial, therefore we do not need to explain further geographical context except that we will filter to only include santa barbara county.</p>
-<div class="cell" data-tags="[]" data-execution_count="16">
+<p>For data wrangling, we will be using numpy’s methods of <code>squeeze()</code> and <code>drop()</code> to remove band coordinates from our landsat data. We use rioxarray to manipulate our raster data. Lastly, matplotlib.pyplot is used to plot our raster map</p>
+<div class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first need to wrangle data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and here i am just squeezing and dropping unneccesary data information, such as the band coordinates</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>landsat <span class="op">=</span> landsat.squeeze()</span>
@@ -277,66 +281,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="hw4-task-3(1)_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<section id="figure-1-the-map-above-shows-the-region-in-which-the-thomas-fire-burned.-the-city-of-ojai-was-surrounded-by-the-thomas-fire-as-seen-to-be-the-gap-in-between-the-red-features.-the-red-mark-on-the-map-shows-vegetation-damaged-caused-by-the-thomas-fire." class="level6">
+<h6 class="anchored" data-anchor-id="figure-1-the-map-above-shows-the-region-in-which-the-thomas-fire-burned.-the-city-of-ojai-was-surrounded-by-the-thomas-fire-as-seen-to-be-the-gap-in-between-the-red-features.-the-red-mark-on-the-map-shows-vegetation-damaged-caused-by-the-thomas-fire.">figure 1: The map above shows the region in which the Thomas fire burned. The city of Ojai was surrounded by the Thomas fire, as seen to be the gap in between the red features. The red mark on the map shows vegetation damaged caused by the thomas fire.</h6>
+</section>
 </section>
 <section id="data-exploration" class="level1">
 <h1>Data Exploration</h1>
-<p>Now that we established our geographic area of interest, we now shift towards looking at the Air Quality Index or AQI of Santa Barbara County. For this, we require more data exploration on our end, as this requires filtering and merging datasets in order to accomplish a time series as our final output</p>
-<div class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>aqi_17.groupby(<span class="st">'county Name'</span>).mean(<span class="st">'AQI'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (c) checking data type </span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>aqi_17.dtypes</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># concatanating two dataframes together</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>aqi <span class="op">=</span> pd.concat([aqi_17, aqi_18])</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># initial column names: notice caps and spaces (difficult to work with!)</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># re-assign the column names - .str.lower() makes them lower case</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>aqi.columns <span class="op">=</span> aqi.columns.<span class="bu">str</span>.lower()</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  re-assign the column names again - .str.replace(' ','_') replaces the space for _</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>aqi.columns <span class="op">=</span> aqi.columns.<span class="bu">str</span>.replace(<span class="st">' '</span>,<span class="st">'_'</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting data from SB county using conditionals</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>aqi_sb <span class="op">=</span> aqi[aqi.county_name <span class="op">==</span> <span class="st">'Santa Barbara'</span>]</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#removing columns using.drop()</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>aqi_sb <span class="op">=</span> aqi_sb.drop(columns <span class="op">=</span> [<span class="st">'state_name'</span>, <span class="st">'county_name'</span>, <span class="st">'state_code'</span>, <span class="st">'county_code'</span>])</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#changing to datetime for date</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>aqi_sb[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(aqi_sb.date)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<p>Now that we established our geographic area of interest, we now shift towards looking at the Air Quality Index or AQI of Santa Barbara County. For this, we require more data exploration on our end, as this requires filtering and merging datasets in order to accomplish a time series as our final output.</p>
+<p>Our time series will cover the air quality index from 2017 to 2018 to give us insight and analyze patterns noted before, during, and after the Thomas fire. This will involve more data wrangling to vizualize what we want. This includes using pandas package for <code>pd.groupby()</code>, and <code>pd.to_datetime</code> for some of our changes. Other data cleanup includes filtering for santa barbara county and renaming columns</p>
+<div class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#finding the mean aqi by county</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>aqi_17.groupby(<span class="st">'county Name'</span>).mean(<span class="st">'AQI'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># concatanating two dataframes together</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>aqi <span class="op">=</span> pd.concat([aqi_17, aqi_18])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># re-assign the column names - .str.lower() makes them lower case</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>aqi.columns <span class="op">=</span> aqi.columns.<span class="bu">str</span>.lower()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#  re-assign the column names again</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>aqi.columns <span class="op">=</span> aqi.columns.<span class="bu">str</span>.replace(<span class="st">' '</span>,<span class="st">'_'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting data from SB county using conditionals</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>aqi_sb <span class="op">=</span> aqi[aqi.county_name <span class="op">==</span> <span class="st">'Santa Barbara'</span>]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#removing columns using.drop()</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>aqi_sb <span class="op">=</span> aqi_sb.drop(columns <span class="op">=</span> [<span class="st">'state_name'</span>, <span class="st">'county_name'</span>, <span class="st">'state_code'</span>, <span class="st">'county_code'</span>])</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#changing to datetime for date</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>aqi_sb[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(aqi_sb.date)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#reseting aqi index</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>aqi_sb.reset_index(inplace <span class="op">=</span> <span class="va">True</span>, drop <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># adding the new column by updating it</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>aqi_sb[<span class="st">'five_day_average'</span>] <span class="op">=</span> aqi_sb.aqi.rolling(window <span class="op">=</span> <span class="dv">5</span>).mean()</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># checking if index is updated</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>aqi_sb.index</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># it is not, so i will reset it</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>aqi_sb.reset_index(inplace <span class="op">=</span> <span class="va">True</span>, drop <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#creating colors first for the lines</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {<span class="st">'aqi'</span>: <span class="st">'#d3d3d3'</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>         <span class="st">'five_day_average'</span>: <span class="st">'red'</span>}</span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># adding the new column by updating it</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>aqi_sb[<span class="st">'five_day_average'</span>] <span class="op">=</span> aqi_sb.aqi.rolling(window <span class="op">=</span> <span class="dv">5</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We now want to plot our time series graph on Santa Barbara county’s AQI during 2017-2018.</p>
-<div class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#PLOTTING TIME</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#creating colors first for the lines</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {<span class="st">'aqi'</span>: <span class="st">'Black'</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">'five_day_average'</span>: <span class="st">'red'</span>}</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#line plot of the AQI using the new column i just added</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>aqi_sb.plot(kind <span class="op">=</span> <span class="st">'line'</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>           x <span class="op">=</span> <span class="st">'date'</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>           y <span class="op">=</span> [<span class="st">'aqi'</span>, <span class="st">'five_day_average'</span>],</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>           color <span class="op">=</span> colors,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>           title <span class="op">=</span><span class="st">'daily and 5-day average AQI in SB County'</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>           ylabel <span class="op">=</span> <span class="st">'AQI Value'</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#line plot of the AQI using the new column i just added</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>aqi_sb.plot(kind <span class="op">=</span> <span class="st">'line'</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>           x <span class="op">=</span> <span class="st">'date'</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>           y <span class="op">=</span> [<span class="st">'aqi'</span>, <span class="st">'five_day_average'</span>],</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>           color <span class="op">=</span> colors,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>           title <span class="op">=</span><span class="st">'daily and 5-day average AQI in SB County'</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>           ylabel <span class="op">=</span> <span class="st">'AQI Value'</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="hw4-task-3(1)_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<p><img src="hw4-task-3(1)_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<section id="figure-2-time-series-coverage-from-2017-2018-on-aqi-in-santa-barbara.-there-is-a-spike-in-air-quality-during-thomas-fire" class="level6">
+<h6 class="anchored" data-anchor-id="figure-2-time-series-coverage-from-2017-2018-on-aqi-in-santa-barbara.-there-is-a-spike-in-air-quality-during-thomas-fire">figure 2: time series coverage from 2017-2018 on AQI in Santa Barbara. There is a spike in Air Quality during Thomas Fire</h6>
+</section>
 </section>
 <section id="analysis" class="level1">
 <h1>analysis</h1>
@@ -345,32 +345,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="final-output" class="level1">
 <h1>Final Output</h1>
-<div class="cell" data-tags="[]" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">9</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># AQI plot</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>aqi_sb.plot(ax <span class="op">=</span> ax1,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">'line'</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>           x <span class="op">=</span> <span class="st">'date'</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           y <span class="op">=</span> [<span class="st">'aqi'</span>, <span class="st">'five_day_average'</span>],</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>           color <span class="op">=</span> colors,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>           title <span class="op">=</span><span class="st">'daily and 5-day average AQI in SB County'</span>,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>           ylabel <span class="op">=</span> <span class="st">'AQI Value'</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># False Color Imagery</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>landsat[[<span class="st">'swir22'</span>, <span class="st">'nir08'</span>, <span class="st">'red'</span>]].to_array().plot.imshow(robust <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>thomas.plot(ax <span class="op">=</span> ax2,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>           edgecolor <span class="op">=</span> <span class="st">'white'</span>,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>           facecolor <span class="op">=</span> <span class="st">'none'</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Post-Thomas fire vegetation Damage (2017)'</span>,  fontsize<span class="op">=</span><span class="dv">13</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">'off'</span>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">9</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># AQI plot</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>aqi_sb.plot(ax <span class="op">=</span> ax1,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">'line'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           x <span class="op">=</span> <span class="st">'date'</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           y <span class="op">=</span> [<span class="st">'aqi'</span>, <span class="st">'five_day_average'</span>],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>           color <span class="op">=</span> colors,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>           title <span class="op">=</span><span class="st">'daily and 5-day average AQI in SB County'</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>           ylabel <span class="op">=</span> <span class="st">'AQI Value'</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># False Color Imagery</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>landsat[[<span class="st">'swir22'</span>, <span class="st">'nir08'</span>, <span class="st">'red'</span>]].to_array().plot.imshow(robust <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>thomas.plot(ax <span class="op">=</span> ax2,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>           edgecolor <span class="op">=</span> <span class="st">'white'</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>           facecolor <span class="op">=</span> <span class="st">'none'</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>           )</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">.3</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Post-Thomas fire vegetation Damage (2017)'</span>,  fontsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">'off'</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="hw4-task-3(1)_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="hw4-task-3(1)_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<section id="figure-3-final-output-depicting-the-aqi-in-santa-barbara-county-and-the-spatial-vizualization-of-the-thomas-fires-damage-and-extent" class="level6">
+<h6 class="anchored" data-anchor-id="figure-3-final-output-depicting-the-aqi-in-santa-barbara-county-and-the-spatial-vizualization-of-the-thomas-fires-damage-and-extent">figure 3: final output depicting the AQI in Santa Barbara County and the spatial vizualization of the Thomas Fire’s damage and extent</h6>
+</section>
+<section id="citations" class="level2">
+<h2 class="anchored" data-anchor-id="citations">Citations</h2>
+<p>US Environmental Protection Agency. Air Quality System Data Mart. available via https://www.epa.gov/outdoor-air-quality-data. Accessed November 28, 2023.</p>
+<p>CALFIRE, USDA Forest Service, other Federal Partners. California Fire Perimeters(All). Available via https://gis.data.ca.gov/maps/CALFIRE-Forestry::california-fire-perimeters-all/about. Accessed November 28, 2023.</p>
+<p>NASA, USGS, Microsoft. Landsat Collection 2 Level-2 Science products. Available via https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2. Accessed November 28, 2023.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

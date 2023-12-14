@@ -67,14 +67,14 @@
     "href": "blog/2023-12-13-220-hw/hw4-task-3(1).html",
     "title": "Air Quality Index of Santa Barbara County during the 2017 Thomas Fire",
     "section": "",
-    "text": "Author: Rosemary Juarez\nLink to github repo: https://github.com/rosemaryjuarez/eds-220-hw4-task3"
+    "text": "Author: Rosemary Juarez\nLink to github repo: github repo"
   },
   {
     "objectID": "blog/2023-12-13-220-hw/hw4-task-3(1).html#purpose",
     "href": "blog/2023-12-13-220-hw/hw4-task-3(1).html#purpose",
     "title": "Air Quality Index of Santa Barbara County during the 2017 Thomas Fire",
     "section": "Purpose",
-    "text": "Purpose\nIn December of 2017, The Thomas fire burned throughout Santa Barbara and Ventura county, creating distress and destructing in its wake. My interest in collecting the air quality during this time can shed light on the correlation between wildfires and air quality. I want to investigate how the Thomas Fire impacted the AQI in Santa Barbara county using public data provided by US Environmental Protection Agency."
+    "text": "Purpose\nIn December of 2017, The Thomas fire burned throughout Santa Barbara and Ventura county, creating distress and destructing in its wake. This wildfire was one of multiple wildfires occuring in California, making this a hotter topic throughout the years. As a native Ventura county resident, I have seen the effects this wildfire has caused in the community. Not only did I have to miss school, but my parents and I were forced to shelter indoors as the air quality grew worse. With the sky burning blood red for a few days, and smoke hazes filling up the streets of Oxnard, my curiosity grew more. Now that I have a chance to explore what exactly was going due to having data science experience, I can now vizualize the Thomas’s fire impact through air quality. My interest in collecting the air quality during this time can shed light on the correlation between wildfires and air quality. I want to investigate how the Thomas Fire impacted the AQI in Santa Barbara county using public data provided by US Environmental Protection Agency."
   },
   {
     "objectID": "blog/2023-12-13-220-hw/hw4-task-3(1).html#highlights",
@@ -88,6 +88,13 @@
     "href": "blog/2023-12-13-220-hw/hw4-task-3(1).html#dataset-description",
     "title": "Air Quality Index of Santa Barbara County during the 2017 Thomas Fire",
     "section": "Dataset Description",
-    "text": "Dataset Description\n\nLandsat 8 imagery:\nFor raster data, this originated from NASA’s Earth Observatory. The landsat imagery has a collection of bands (red, green, blue, near-infrared and shortwave infrared) from the Landsat Collection 2 Level-2 atmosperically corrected surface reflectance data, collected by the Landsat 8 satellite.\nThomas Fire Perimeter:\nFor our Vector data, the Thomas fire perimeter polygon came from the CA State Geoportal, which comes with multiple fire perimeters.\nAir Quality Index\nThe Air Quality Index (AQI) data from the US Environmental Protection Agency. This data provides AQI coverage period from 2017 - 2018.\n\n\nReferences to datasets\nLandsat 8 imagery: https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2\nThomas Fire Perimeter: https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/about\nAQI: https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI"
+    "text": "Dataset Description\n\nLandsat 8 imagery:\nFor raster data, this originated from NASA’s Earth Observatory. The landsat imagery has a collection of bands (red, green, blue, near-infrared and shortwave infrared) from the Landsat Collection 2 Level-2 atmosperically corrected surface reflectance data, collected by the Landsat 8 satellite. the landsat imagery used in this report is post-2017\nThomas Fire Perimeter:\nFor our Vector data, the Thomas fire perimeter polygon came from the CA State Geoportal, which comes with multiple fire perimeters.\nAir Quality Index\nThe Air Quality Index (AQI) data from the US Environmental Protection Agency. This data provides AQI coverage period from 2017 - 2018.\n\n\nReferences to datasets\nLandsat 8 imagery: https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2\nThomas Fire Perimeter: https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/about\nAQI: https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI"
+  },
+  {
+    "objectID": "blog/2023-12-13-220-hw/hw4-task-3(1).html#citations",
+    "href": "blog/2023-12-13-220-hw/hw4-task-3(1).html#citations",
+    "title": "Air Quality Index of Santa Barbara County during the 2017 Thomas Fire",
+    "section": "Citations",
+    "text": "Citations\nUS Environmental Protection Agency. Air Quality System Data Mart. available via https://www.epa.gov/outdoor-air-quality-data. Accessed November 28, 2023.\nCALFIRE, USDA Forest Service, other Federal Partners. California Fire Perimeters(All). Available via https://gis.data.ca.gov/maps/CALFIRE-Forestry::california-fire-perimeters-all/about. Accessed November 28, 2023.\nNASA, USGS, Microsoft. Landsat Collection 2 Level-2 Science products. Available via https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2. Accessed November 28, 2023."
   }
 ]
