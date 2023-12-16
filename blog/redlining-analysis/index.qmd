@@ -1,59 +1,38 @@
 ---
-title: "index"
+title: "Redline analysis in LA"
 format: html
 editor: visual
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(include = TRUE, message = FALSE, warning = FALSE)
 ```
 
+# Historical Redline Analysis in Los Angeles County By Census Tract
+
 ## Overview
 
-In the 1930s, the Home Owners' Loan Corporation (HOLC), a New Deal initiative, assessed neighborhoods for real estate investment safety. The HOLC's grading system (A for green, B for blue, C for yellow, and D for red) was then used to deny loans for home ownership, a discriminatory practice known as "redlining." This historical injustice has affected community wealth and health. Redlined areas exhibit lower greenery levels and higher temperatures compared to other neighborhoods. 
+In the 1930s, the Home Owners' Loan Corporation (HOLC), a New Deal initiative, assessed neighborhoods for real estate investment safety. The HOLC's grading system (A for green, B for blue, C for yellow, and D for red) was then used to deny loans for home ownership, a discriminatory practice known as "redlining." This historical injustice has affected community wealth and health. Redlined areas exhibit lower greenery levels and higher temperatures compared to other neighborhoods.
 
-I want to examine how this is still a current-day issue by outlining the socioeconomics of current tracts. A recent study found that redlining has not only affected the
-environments communities are exposed to, it has also shaped our
-observations of biodiversity.Ellis-Soto and co-authors found that redlined
-neighborhoods remain the most undersampled areas across 195 US cities.
-This gap is highly concerning, because conservation decisions are made
-based on these data[4].
+I want to examine how this is still a current-day issue by outlining the socioeconomics of current tracts. A recent study found that redlining has not only affected the environments communities are exposed to, it has also shaped our observations of biodiversity.Ellis-Soto and co-authors found that redlined neighborhoods remain the most undersampled areas across 195 US cities. This gap is highly concerning, because conservation decisions are made based on these data\[4\].
 
-[^4]: Ellis-Soto, D., Chapman, M., & Locke, D. H. (2023). Historical
-    redlining is associated with increasing geographical disparities in
-    bird biodiversity sampling in the United States. Nature Human
-    Behaviour, 1-9.
-
-Check out coverage by
-[EOS](https://eos.org/articles/bird-biodiversity-reports-reflect-cities-redlined-past?utm_source=EosBuzz&mkt_tok=OTg3LUlHVC01NzIAAAGOx3ckQPpeDY3QyFKdUnBSYqILj3qLrgb_Q2lasphwcF90xEzMgjZFUo3NHsw3caXDcZe6I8D8qdVsSRr3wzhb6LKAQRgNo8ffhjieEbDwMw).
+Check out coverage by [EOS](https://eos.org/articles/bird-biodiversity-reports-reflect-cities-redlined-past?utm_source=EosBuzz&mkt_tok=OTg3LUlHVC01NzIAAAGOx3ckQPpeDY3QyFKdUnBSYqILj3qLrgb_Q2lasphwcF90xEzMgjZFUo3NHsw3caXDcZe6I8D8qdVsSRr3wzhb6LKAQRgNo8ffhjieEbDwMw).
 
 ### Data
 
 #### EJScreen
 
-We will be working with data from the United States Environmental
-Protection Agency's EJScreen: Environmental Justice Screening and
-Mapping Tool. EJScreen provides on environmental and demographic information for the
-US at the Census tract and block group levels.
-
+We will be working with data from the United States Environmental Protection Agency's EJScreen: Environmental Justice Screening and Mapping Tool. EJScreen provides on environmental and demographic information for the US at the Census tract and block group levels.
 
 #### Mapping Inequality
 
-I will be working with maps of HOLC grade designations for Los Angeles.
-Information on the data can be found
-[here]().[^5]
+I will be working with maps of HOLC grade designations for Los Angeles. Information on the data can be found [here]().[^1]
 
-[^5]: Robert K. Nelson, LaDale Winling, Richard Marciano, Nathan
-    Connolly, et al., "Mapping Inequality," American Panorama, ed.
-    Robert K. Nelson and Edward L. Ayers, accessed October 17, 2023,
-    <https://dsl.richmond.edu/panorama/redlining/>
+[^1]: Robert K. Nelson, LaDale Winling, Richard Marciano, Nathan Connolly, et al., "Mapping Inequality," American Panorama, ed. Robert K. Nelson and Edward L. Ayers, accessed October 17, 2023, <https://dsl.richmond.edu/panorama/redlining/>
 
 #### Biodiversity observations
 
-The [Global Biodiversity Information Facility](gbif.org) is the largest
-aggregator of biodiversity observations in the world. Observations
-typically include a location and date that a species was observed.
+The [Global Biodiversity Information Facility](gbif.org) is the largest aggregator of biodiversity observations in the world. Observations typically include a location and date that a species was observed.
 
 We will be working observations of birds from 2021 onward.
 
@@ -83,7 +62,9 @@ I will first Read in EJScreen data and filter to Los Angeles County
 #reading ejscreen here
 ejscreen <- st_read("C:/Users/rosem//Documents/MEDS/Courses/EDS-223/assignment-2-rosemaryjuarez/data/EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb")
 ```
+
 I will then need to do some data wrangling, by filtering to only the county and census block groups that I am interested with. I am interested in viewing the 95th percentile of national valies for wastewater discharge by adding a centroid.
+
 ```{r}
 #filtering to los angeles only
 los_angeles <- filter(ejscreen, CNTY_NAME == "Los Angeles County" )
@@ -111,6 +92,7 @@ tm_shape(los_angeles) +
 ```
 
 I willnot filter and look for census block groups that have less than 5% of the population considered low-income, find the 80th percentile for particulate matter 2.5, and those above 80th percentile for superfund proximity. We are looking at several groups as we are interested in comparing those in affluent and poor areas
+
 ```{r }
 
 #first setting low_income
@@ -124,6 +106,7 @@ low_income <- los_angeles %>%
 pm2_5 <- los_angeles %>% 
   filter((P_PM25 > 80) & (P_PNPL > 80))
 ```
+
 Now that I have filtered for factors I am interested in, I will now begin to investigate redlining by downloading the geojson of the redlining in Los Angeles.
 
 ```{r }
@@ -133,6 +116,7 @@ LA_redlining <- st_read("https://dsl.richmond.edu/panorama/redlining/static/citi
 ```
 
 Now i will show a map of historical redlining boundaries, colored by HOLC grade. A reminder that the HOLC grading system are 4 bins: A for green, B for blue, C for yellow, and D for red
+
 ```{r }
 
 #first need to read in data and see what it looks like
@@ -145,11 +129,9 @@ tm_shape(LA_redlining) +
 
 ```
 
-I now what to find the number of census block groups that fall within areas with HOLC.
+I now what to find the number of census block groups that fall within areas with HOLC. Finally I want to summarize all the current conditions from the EJSCREEN data. I will find the mean for those in low income, low life expectancy, and air toxics cancer risk
 
-```{r eval=FALSE}
-#check to see if they match
-st_crs(los_angeles) == st_crs(LA_redlining)
+```{r, eval=FALSE}
 
 #change CRS
 LA_redlining <- st_transform(LA_redlining, "EPSG:3857")
@@ -158,71 +140,65 @@ LA_redlining <- st_transform(LA_redlining, "EPSG:3857")
 
 holc_census <- st_join(x = los_angeles, y = LA_redlining)
 
-```
+#crs change again
+holc_census <- st_transform(holc_census,"EPSG:3857" )
 
-Finally I want to summarize all the current conditions from the EJSCREEN data. I will find the mean for those in low income, low life expectancy, and air toxics cancer risk
-
-```{r }
-holc_census %>% 
+holc_summary <- holc_census %>% 
   group_by(fill) %>% 
   summarise(lowinc_mean = mean(LOWINCPCT, na.rm = TRUE) * 100,
             pm_25_mean = mean(P_PM25, na.rm = TRUE),
             life_exp_mean = mean(P_LIFEEXPPCT, na.rm = TRUE),
             cancer_mean = mean(P_CANCER, na.rm = TRUE)
             )
+
+holc_summary
 ```
 
-From the evidence above, Class D consistently has the worst ratings
-throughout the table. It not only has the lowest average on
-Socio-Economic Status, but it also suffers from higher risk of cancer or
-lower life expectancy. Meanwhile class A has consistent top marks in
-health and wealth.
+From the evidence above, Class D consistently has the worst ratings throughout the table. It not only has the lowest average on Socio-Economic Status, but it also suffers from higher risk of cancer or lower life expectancy. Meanwhile class A has consistent top marks in health and wealth.
 
 ### Investigating the legacy of redlining in biodiversity observations
 
-For bird observations from 2022 that fall within neighborhoods with HOLC
-grads, I find the percent of observations within each redlining categories
-and plot results. 
+For bird observations from 2022 that fall within neighborhoods with HOLC grads, I find the percent of observations within each redlining categories and plot results.
 
 ```{r}
 #read in bird data:
 birds <- st_read("C:/Users/rosem/Documents/MEDS/Courses/EDS-223/assignment-2-rosemaryjuarez/data/gbif-birds-LA/gbif-birds-LA.shp")
 ```
+
 ```{r}
 birds <- birds %>% 
   filter(year == 2022)
 ```
 
+Right now i am redefining the crs for birds, and joining both birds and holc census data. Finally, now I can finally filter and analyze the summary between birds and HOLC grade. I would assume the more afluent neighborhoods would have higher biodiversity.
 
-Right now i am redefining the crs for birds, and joining both birds and holc census data
 ```{r}
-#checking CRS again
-st_crs(holc_census) == st_crs(birds)
 
 #change CRS
 birds <- st_transform(birds, "EPSG:3857")
 
-bird_holc <- st_join(x = holc_census, y = birds)
+
+# bird_holc <- st_join(x = holc_census, y = birds)
+
+
+#summary_birds_holc <- bird_holc %>% 
+  #group_by(grade) %>% 
+  #summarize(count = n()) %>% 
+ # mutate(percentage = (count/sum(count)) *100) %>% 
+  #st_drop_geometry() %>% 
+ # na.omit()
+
+
 ```
 
-
-#now I can finally filter and analyze the summary between birds and HOLC grade. I would assume the more afluent neighborhoods would have higher biodiversity. 
 ```{r}
-
-summary_birds_holc <- bird_holc %>% 
-  group_by(grade) %>% 
-  summarize(count = n()) %>% 
-  mutate(percentage = (count/sum(count)) *100) %>% 
-  st_drop_geometry() %>% 
-  na.omit()
-
+#ggplot(data = summary_birds_holc, aes(x = grade, y = percentage))+
+ # geom_bar(stat = 'identity', fill = 'green', col = 'darkgreen')+
+  #theme_minimal()+
+  #labs(x = 'HOLC Grade', y = 'Percentage of Birds Found', title = 'Bird Observations within HOLC Grades')
 ```
-```{r}
-ggplot(data = summary_birds_holc, aes(x = grade, y = percentage))+
-  geom_bar(stat = 'identity', fill = 'green', col = 'darkgreen')+
-  theme_minimal()+
-  labs(x = 'HOLC Grade', y = 'Percentage of Birds Found', title = 'Bird Observations within HOLC Grades')
-```
+![birds_holc](birds_holc.jpg)
+
 ## Conclusion
 
 I think these are somewhat surprising, as i did not expect to see HOLC Grade a to be lower than b or C. As Mentioned previously, I would assume those in more affluent neighborhoods would have more biodiversity. To show that B has more biodiversity must mean that there are some factors that O did not consider

@@ -71,8 +71,8 @@ I clean up the data by wrangling and renaming several outputs. And I end up with
 
 ```{r}
 #Reading in the necessary data
-calqua <- read_csv("data/2014_calqua_bird_taxonomy.csv")
-air_temp <- read_csv('data/San_Diego_Daily_Weather_Data_2014.csv')
+calqua <- read_csv('C:/Users/rosem/Documents/MEDS/Courses/EDS-222/final_project/data/2014_calqua_bird_taxonomy.csv')
+air_temp <- read_csv("C:/Users/rosem/Documents/MEDS/Courses/EDS-222/final_project/data/San_Diego_Daily_Weather_Data_2014.csv")
 
 #setting the dates to by type date.
 air_temp$hpwren_timestamp <- as.Date(air_temp$hpwren_timestamp) 
