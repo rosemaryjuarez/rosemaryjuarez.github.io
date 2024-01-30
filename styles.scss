@@ -1,0 +1,30 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+
+// Colors
+$dark-green:#588061;
+$light-green:#869F77;
+$light-pink:#FDE9EA;
+$pink:#FFDDD6;
+$dark-pink:#F1B6AC;
+$purple:#A155B9;
+$mexican-pink:#e4007c;
+
+
+// Base document colors
+$navbar-bg: $light-pink; // navbar
+$navbar-fg: $light-green; // navbar foreground elements
+$navbar-hl: $dark-green; // highlight color when hovering over navbar links
+$body-bg: $pink; // page background 
+$body-color: $mexican-pink; // page text 
+$footer-bg: $dark-pink; // footer 
+$link-color: $purple; // hyperlinks 
+
+// Inline code
+$code-bg: $dark-pink; // inline code background color
+$code-color: $dark-green; // inline code text color
+
+// Code blocks
+$code-block-bg: $light-pink; // code block background color

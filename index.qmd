@@ -4,21 +4,10 @@ image: Juarez.png
 toc: false
 about:
   template: jolla
-
 ---
 
 Rosemary is a working towards a Master of Environmental Data Science (Expected June 2024)
 
 ## Education
 
-University of California, Santa barbara | San Barbara, CA
-B.A in Geography, GIS Emphasis | Sept 2019 - June 2023
-
-
-## Experience
-
-GIS technician | UCSB Geospatial Unit | November 2021 - present
-
- Intern | Los Padres ForestWatch | September 2021 - present
----
-
+University of California, Santa Barbara \| San Barbara, CA B.A in Geography, GIS Emphasis \| Sept 2019 - June 2023

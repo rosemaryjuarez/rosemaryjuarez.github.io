@@ -1,7 +1,17 @@
 ---
-title: "about me"
+title: "About Me"
+output: html_document
 ---
 
 ## 
 
-about me\
+I am currently a MEDS student at the **Bren School of Environmental Science & Management.** I focus on spatial data visualization. I
+
+As an undergrad at UCSB, I was a part of the [Promise Scholar Program](https://promisescholars.sa.ucsb.edu/about), and awarded the Betty Wells Promise Scholar scholarship. The promise scholar is awarded to high-achieving, first-generation students from low-income housing. Students are guaranteed \$120,000 across all four years, allowing for me to prioritize my education.
+
+For graduate school, I also received two fellowships. The Promise Fellowship, issued by the Graduate Division at UC Santa Barbara and donated by Dr. Nien-Tsu Shen, is a total of \$40,000 and is expected to cover the cost of tuition and fees for academic year 2023--24, including summer. Awarded as part of the Promise Scholar Program. The Environmental Data Science Fellowship, issued by the Bren School,recognizes outstanding academic record and will cover the cost of a professional degree.
+
+I have several indoor hobbies. I spend the majority of my time reading and reviewing manga, and adopting and training pet rats.
+
+| ![Bolillo and Concha](bolillo-and-concha.jpeg) Bolillo (left) and concha (right) | ![Bolillo Destroying Couch](images/bolillo-menacing.jpg) Bolillo destroying my couch after leaving her alone (right) |
+|:---:|:---:|
