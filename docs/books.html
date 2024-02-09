@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rosemary Juarez - blog</title>
+<title>Rosemary Juarez - Book Reviews</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -122,11 +122,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog_settings.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./blog_settings.html" rel="" target="">
  <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./books.html" rel="" target="">
+    <a class="nav-link active" href="./books.html" rel="" target="" aria-current="page">
  <span class="menu-text">Book Reviews</span></a>
   </li>  
   <li class="nav-item">
@@ -145,14 +145,20 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="MEDS">MEDS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Quarto">Quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Workshop">Workshop <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#book-reviews-on-my-manga-collection" id="toc-book-reviews-on-my-manga-collection" class="nav-link active" data-scroll-target="#book-reviews-on-my-manga-collection">Book reviews on my manga collection:</a></li>
+  </ul>
+</nav>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Junko">Junko <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Review">Review <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Shoujo">Shoujo <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">blog</h1>
+<h1 class="title">Book Reviews</h1>
 </div>
 
 
@@ -167,107 +173,73 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>this is the start of my first blog post</p>
+<section id="book-reviews-on-my-manga-collection" class="level2">
+<h2 class="anchored" data-anchor-id="book-reviews-on-my-manga-collection">Book reviews on my manga collection:</h2>
+<p>A brief list of reviews on my current collection. As of now, my collection has around ~800 volumes. With more than 150 unique titles. it is a continuous growing collection. To find out more about what manga in general is, <a href="https://www.britishmuseum.org/blog/introduction-manga">click here</a>, from the British Museum.</p>
+<p>.Japanese mangas are organized by demographics rather than genre. The demographics are composed of 4 categories, which include: shonen(young boy), seinen(adult male), shoujo(young girl), and Josei(adult women). These japanese demographics all have vastly ranging genres within each demographic.</p>
+<p>I specifically read shoujo and Josei mangas, as not only am I within the demographic, in enjoy the focus on character development and introspection that i notice more than in other categories. As someone who enjoys reading romance, this demographic range also includes multiple endless stories on this.</p>
+<p>I will post reviews accordingly here on my book review posts. posts will likely not be in reading order unless i explicitly mention.</p>
 
 
 
+</section>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Quarto,MEDS,Workshop" data-listing-file-modified-sort="1702738823499" data-listing-reading-time-sort="1">
-<a href="./blog/2023-11-06-my-first-post/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-My first blog post
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Quarto'); return false;">
-Quarto
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('MEDS'); return false;">
-MEDS
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Workshop'); return false;">
-Workshop
-</div>
-</div>
-<div class="card-text listing-description">
-This is my short description
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Rosemary Juarez
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1702738823520" data-listing-reading-time-sort="5">
-<a href="./blog/2023-12-13-220-hw/hw4-task-3(1).html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="blog\2023-12-13-220-hw\hw4-task-3(1)_files\figure-html\cell-3-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Air Quality Index of Santa Barbara County during the 2017 Thomas Fire
-</h5>
-<div class="card-text listing-description">
-Author: Rosemary Juarez
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1702739760596" data-listing-reading-time-sort="8">
-<a href="./blog/2023-12-14-bird-analysis/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./blog/2023-12-14-bird-analysis/bird.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Can proxy data help determine th Urban Heat Index in California?
-</h5>
-<div class="card-text listing-description">
-Using proxy data to determine if they are accurate enough to use as an alternate to Urban heat index
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Rosemary Juarez
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1702745711889" data-listing-reading-time-sort="6">
-<a href="./blog/redlining-analysis/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="blog\redlining-analysis\index_files\figure-html\unnamed-chunk-3-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Redline analysis in LA
-</h5>
-<div class="card-text listing-description">
-In the 1930s, the Home Owners’ Loan Corporation (HOLC), a New Deal initiative, assessed neighborhoods for real estate investment safety. The HOLC’s grading system (A for…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="Junko,Shoujo,Review" data-listing-date-sort="1707379200000" data-listing-file-modified-sort="1707416550195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Junko - Love him, Not Me!" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Feb 8, 2024</span>
+</td>
+<td>
+<a href="./books/2024-02-08-first-post-junko/index.html" class="title listing-title">Junko - Love him, Not Me!</a>
+</td>
+<td>
+<span class="listing-author">Rosemary Juarez</span>
+</td>
+</tr>
+</tbody>
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

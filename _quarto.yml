@@ -10,6 +10,7 @@ website:
         text: Home
       - about.qmd
       - blog_settings.qmd
+      - books.qmd
       - href: resources.qmd
         text: Resources
   page-footer:

@@ -1,0 +1,18 @@
+---
+title: "Book Reviews"
+listing: 
+  contents: books # all Quarto docs in the `posts` directory will be included on your listing page
+  type: table # or `default` or `table`; each type has its own set of yaml options to include
+  sort: "date desc" # can also sort on more than one field
+  categories: true # allows you to sort posts by assigned categories 
+---
+
+## Book reviews on my manga collection:
+
+A brief list of reviews on my current collection. As of now, my collection has around \~800 volumes. With more than 150 unique titles. it is a continuous growing collection. To find out more about what manga in general is, [click here](https://www.britishmuseum.org/blog/introduction-manga), from the British Museum.
+
+.Japanese mangas are organized by demographics rather than genre. The demographics are composed of 4 categories, which include: shonen(young boy), seinen(adult male), shoujo(young girl), and Josei(adult women). These japanese demographics all have vastly ranging genres within each demographic.
+
+I specifically read shoujo and Josei mangas, as not only am I within the demographic, in enjoy the focus on character development and introspection that i notice more than in other categories. As someone who enjoys reading romance, this demographic range also includes multiple endless stories on this.
+
+I will post reviews accordingly here on my book review posts. posts will likely not be in reading order unless i explicitly mention.

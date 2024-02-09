@@ -1,0 +1,12 @@
+---
+title: "Junko - Love him, Not Me!"
+description: "My first review, and an interesting premise"
+author:
+  - name: Rosemary Juarez
+date: 02-08-2024
+categories: [Junko, Shoujo, Review] # self-defined categories
+citation: 
+  url: https://rosemaryjuarez.github.io/books/2024-02-08-first-post-junko/ 
+image: junko-kiss-him.jpg
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---

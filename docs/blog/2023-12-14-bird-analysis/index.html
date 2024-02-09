@@ -9,7 +9,7 @@
 <meta name="author" content="Rosemary Juarez">
 <meta name="description" content="Using proxy data to determine if they are accurate enough to use as an alternate to Urban heat index">
 
-<title>Can proxy data help determine th Urban Heat Index in California?</title>
+<title>Rosemary Juarez - Can proxy data help determine th Urban Heat Index in California?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,6 +105,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Rosemary Juarez</span>
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -117,10 +122,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">about me</span></a>
+ <span class="menu-text">About Me</span></a>
   </li>  
-  <li class="dropdown-header">
- <span class="menu-text">blog.qmd</span></li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog_settings.html" rel="" target="">
+ <span class="menu-text">blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../books.html" rel="" target="">
+ <span class="menu-text">Book Reviews</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../resources.html" rel="" target="">
  <span class="menu-text">Resources</span></a>
@@ -229,6 +240,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'dplyr' was built under R version 4.3.2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -248,10 +262,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tufte)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feasts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tufte)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feasts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'feasts' was built under R version 4.3.2</code></pre>
@@ -264,21 +278,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at C:/Users/rosem/Documents/MEDS/Courses/rosemaryjuarez.github.io</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to GEOS 3.11.2, GDAL 3.6.2, PROJ 9.2.0; sf_use_s2() is TRUE</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: sp
@@ -297,21 +311,21 @@ The following object is masked from 'package:dplyr':
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gstat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gstat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'gstat' was built under R version 4.3.2</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(automap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(automap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'automap' was built under R version 4.3.2</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -323,32 +337,32 @@ The following object is masked from 'package:raster':
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: viridisLite</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(basemaps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(basemaps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'basemaps' was built under R version 4.3.2</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#setting up my basemap</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set_defaults</span>(<span class="at">map_service =</span> <span class="st">"osm"</span>, <span class="at">map_type =</span> <span class="st">"topographic"</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#to call the basemap</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ext)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#setting up my basemap</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set_defaults</span>(<span class="at">map_service =</span> <span class="st">"osm"</span>, <span class="at">map_type =</span> <span class="st">"topographic"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#to call the basemap</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ext)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>I clean up the data by wrangling and renaming several outputs. And I end up with one data frame that has both air temperature and California Quail Count.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading in the necessary data</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>calqua <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'C:/Users/rosem/Documents/MEDS/Courses/EDS-222/final_project/data/2014_calqua_bird_taxonomy.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading in the necessary data</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>calqua <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'C:/Users/rosem/Documents/MEDS/Courses/EDS-222/final_project/data/2014_calqua_bird_taxonomy.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 180 Columns: 25
@@ -364,7 +378,7 @@ date  (1): Date
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>air_temp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/rosem/Documents/MEDS/Courses/EDS-222/final_project/data/San_Diego_Daily_Weather_Data_2014.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>air_temp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/rosem/Documents/MEDS/Courses/EDS-222/final_project/data/San_Diego_Daily_Weather_Data_2014.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 1587257 Columns: 13
@@ -378,28 +392,28 @@ dttm  (1): hpwren_timestamp
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#setting the dates to by type date.</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>air_temp<span class="sc">$</span>hpwren_timestamp <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(air_temp<span class="sc">$</span>hpwren_timestamp) </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>calqua<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(calqua<span class="sc">$</span>Date) </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#removing any duplicates in air temperature or timestamps, and only keeping originals</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>air_temp <span class="ot">&lt;-</span> <span class="fu">distinct</span>(air_temp, hpwren_timestamp, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#merging california Quails and air_temperature by Date</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>calqua_merge <span class="ot">&lt;-</span> <span class="fu">merge</span>(calqua, air_temp, <span class="at">by.x =</span> <span class="st">'Date'</span>, <span class="at">by.y =</span> <span class="st">'hpwren_timestamp'</span>, <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#setting the dates to by type date.</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>air_temp<span class="sc">$</span>hpwren_timestamp <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(air_temp<span class="sc">$</span>hpwren_timestamp) </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>calqua<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(calqua<span class="sc">$</span>Date) </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#removing any duplicates in air temperature or timestamps, and only keeping originals</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>air_temp <span class="ot">&lt;-</span> <span class="fu">distinct</span>(air_temp, hpwren_timestamp, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#merging california Quails and air_temperature by Date</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>calqua_merge <span class="ot">&lt;-</span> <span class="fu">merge</span>(calqua, air_temp, <span class="at">by.x =</span> <span class="st">'Date'</span>, <span class="at">by.y =</span> <span class="st">'hpwren_timestamp'</span>, <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>After cleaning my data, I now plot a scatter plot showing the correlation between air_temperature and bird count in San Diego.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(calqua_merge, <span class="fu">aes</span>(<span class="at">x =</span> air_temp, <span class="at">y =</span> HOW_MANY)) <span class="sc">+</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">'navy'</span>)<span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>, <span class="at">color =</span><span class="st">'red'</span>) <span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Air Temperature (F)'</span>) <span class="sc">+</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Bird Count'</span>) <span class="sc">+</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'California Quail sightings in California'</span>)<span class="sc">+</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(calqua_merge, <span class="fu">aes</span>(<span class="at">x =</span> air_temp, <span class="at">y =</span> HOW_MANY)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">'navy'</span>)<span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>, <span class="at">color =</span><span class="st">'red'</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Air Temperature (F)'</span>) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Bird Count'</span>) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'California Quail sightings in California'</span>)<span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -419,7 +433,7 @@ dttm  (1): hpwren_timestamp
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(HOW_MANY <span class="sc">~</span> air_temp, <span class="at">data =</span> calqua_merge))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(HOW_MANY <span class="sc">~</span> air_temp, <span class="at">data =</span> calqua_merge))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -465,17 +479,17 @@ F-statistic: 0.05699 on 1 and 117 DF,  p-value: 0.8117</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rename our z value to a simpler term</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>calqua_merge <span class="ot">&lt;-</span> calqua_merge <span class="sc">%&gt;%</span> </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">depth =</span> SNOW_DEP_ATLEAST)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#clean and map our bird sighting locations</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>calqua_merge <span class="sc">%&gt;%</span> </span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> LATITUDE, <span class="at">y =</span> LONGITUDE, <span class="at">color =</span> depth)) <span class="sc">+</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis</span>(<span class="at">option =</span> <span class="st">"B"</span>) <span class="sc">+</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="co">#optional </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rename our z value to a simpler term</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>calqua_merge <span class="ot">&lt;-</span> calqua_merge <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">depth =</span> SNOW_DEP_ATLEAST)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#clean and map our bird sighting locations</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>calqua_merge <span class="sc">%&gt;%</span> </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> LATITUDE, <span class="at">y =</span> LONGITUDE, <span class="at">color =</span> depth)) <span class="sc">+</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis</span>(<span class="at">option =</span> <span class="st">"B"</span>) <span class="sc">+</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="co">#optional </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
@@ -491,40 +505,40 @@ F-statistic: 0.05699 on 1 and 117 DF,  p-value: 0.8117</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#turning our calqua_merge into object class sf</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(calqua_merge, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"LATITUDE"</span>, <span class="st">"LONGITUDE"</span>), <span class="at">crs =</span> <span class="dv">25832</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">st_coordinates</span>(.))</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#remove na rows in calqua</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>non_na_rows <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(calqua_sf<span class="sc">$</span>depth)</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[non_na_rows, ]</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#remove columns that have all na in calqua_sf</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[ , <span class="fu">colSums</span>(<span class="fu">is.na</span>(calqua_sf))<span class="sc">==</span><span class="dv">0</span>]</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#remove all duplicates from calqua_sf geometry</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> <span class="fu">distinct</span>(calqua_sf, geometry, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co">#remove na rows in calqua</span></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>non_na_rows <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(calqua_sf<span class="sc">$</span>depth)</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[non_na_rows, ]</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="co">#remove columns that have all na in calqua_sf</span></span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[ , <span class="fu">colSums</span>(<span class="fu">is.na</span>(calqua_sf))<span class="sc">==</span><span class="dv">0</span>]</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="co">#remove all duplicates from calqua_sf geometry</span></span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> <span class="fu">distinct</span>(calqua_sf, geometry, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#turning our calqua_merge into object class sf</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(calqua_merge, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"LATITUDE"</span>, <span class="st">"LONGITUDE"</span>), <span class="at">crs =</span> <span class="dv">25832</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">st_coordinates</span>(.))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#remove na rows in calqua</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>non_na_rows <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(calqua_sf<span class="sc">$</span>depth)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[non_na_rows, ]</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">#remove columns that have all na in calqua_sf</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[ , <span class="fu">colSums</span>(<span class="fu">is.na</span>(calqua_sf))<span class="sc">==</span><span class="dv">0</span>]</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co">#remove all duplicates from calqua_sf geometry</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> <span class="fu">distinct</span>(calqua_sf, geometry, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co">#remove na rows in calqua</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>non_na_rows <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(calqua_sf<span class="sc">$</span>depth)</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[non_na_rows, ]</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co">#remove columns that have all na in calqua_sf</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> calqua_sf[ , <span class="fu">colSums</span>(<span class="fu">is.na</span>(calqua_sf))<span class="sc">==</span><span class="dv">0</span>]</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="co">#remove all duplicates from calqua_sf geometry</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>calqua_sf <span class="ot">&lt;-</span> <span class="fu">distinct</span>(calqua_sf, geometry, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>After cleaning up the data, we can now prepare and run a variogram plot.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating the autofit variogram</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>v_mod_full <span class="ot">&lt;-</span> automap<span class="sc">::</span><span class="fu">autofitVariogram</span>(<span class="at">formula =</span> X<span class="sc">~</span><span class="dv">1</span>, calqua_sf)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>v_mod_calqua <span class="ot">&lt;-</span> v_mod_full<span class="sc">$</span>var_model</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(v_mod_calqua)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating the autofit variogram</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>v_mod_full <span class="ot">&lt;-</span> automap<span class="sc">::</span><span class="fu">autofitVariogram</span>(<span class="at">formula =</span> X<span class="sc">~</span><span class="dv">1</span>, calqua_sf)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>v_mod_calqua <span class="ot">&lt;-</span> v_mod_full<span class="sc">$</span>var_model</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(v_mod_calqua)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  model        psill    range kappa
@@ -533,9 +547,9 @@ F-statistic: 0.05699 on 1 and 117 DF,  p-value: 0.8117</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#my fitted Variogram Model</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(v_mod_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#my fitted Variogram Model</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(v_mod_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
@@ -547,9 +561,9 @@ F-statistic: 0.05699 on 1 and 117 DF,  p-value: 0.8117</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>grd_sf <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(calqua_sf, <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">20</span>))</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calqua_sf<span class="sc">$</span>geometry)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(grd_sf, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>grd_sf <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(calqua_sf, <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">20</span>))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calqua_sf<span class="sc">$</span>geometry)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(grd_sf, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
@@ -559,12 +573,12 @@ F-statistic: 0.05699 on 1 and 117 DF,  p-value: 0.8117</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>krig_cal <span class="ot">&lt;-</span> <span class="fu">krige</span>(</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  depth<span class="sc">~</span><span class="dv">1</span>, </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  calqua_sf,</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  grd_sf,</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> v_mod_calqua</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>krig_cal <span class="ot">&lt;-</span> <span class="fu">krige</span>(</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  depth<span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  calqua_sf,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  grd_sf,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> v_mod_calqua</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[using ordinary kriging]</code></pre>
@@ -574,29 +588,29 @@ F-statistic: 0.05699 on 1 and 117 DF,  p-value: 0.8117</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raw wells using geom_point()</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>p_raw <span class="ot">=</span> calqua_merge <span class="sc">%&gt;%</span> </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> LATITUDE, <span class="at">y =</span> LONGITUDE, <span class="at">color =</span> depth)) <span class="sc">+</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis</span>(<span class="at">option =</span> <span class="st">"B"</span>) <span class="sc">+</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">"calqua Sampled"</span>) <span class="sc">+</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the kriging output using geom_raster()</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>p_kriging <span class="ot">&lt;-</span>p_kriging <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> krig_cal, <span class="fu">aes</span>(<span class="at">fill =</span> var1.pred)) <span class="sc">+</span></span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">"Ordinary Kriging"</span>) <span class="sc">+</span></span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">terrain.colors</span>(<span class="dv">100</span>)) <span class="sc">+</span></span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Z"</span>, <span class="at">reverse=</span><span class="cn">TRUE</span>))</span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_raw) <span class="sc">+</span> <span class="fu">print</span>(p_kriging)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raw wells using geom_point()</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>p_raw <span class="ot">=</span> calqua_merge <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> LATITUDE, <span class="at">y =</span> LONGITUDE, <span class="at">color =</span> depth)) <span class="sc">+</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis</span>(<span class="at">option =</span> <span class="st">"B"</span>) <span class="sc">+</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">"calqua Sampled"</span>) <span class="sc">+</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the kriging output using geom_raster()</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>p_kriging <span class="ot">&lt;-</span>p_kriging <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> krig_cal, <span class="fu">aes</span>(<span class="at">fill =</span> var1.pred)) <span class="sc">+</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">"Ordinary Kriging"</span>) <span class="sc">+</span></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">terrain.colors</span>(<span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Z"</span>, <span class="at">reverse=</span><span class="cn">TRUE</span>))</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_raw) <span class="sc">+</span> <span class="fu">print</span>(p_kriging)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
@@ -862,6 +876,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2024, Rosemary Juarez
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
