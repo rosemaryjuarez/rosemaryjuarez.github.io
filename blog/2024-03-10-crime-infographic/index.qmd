@@ -1,0 +1,287 @@
+---
+title: 'Data Visualization and Infographic Design Elements'
+subtitle: "Exploring Los Angeles County crimes data from 2020-2024"
+author: 'Rosemary Juarez'
+date: "3/10/2024"
+format:
+  html:
+    embed-resources: true
+    code-fold: true
+    code-tools: true
+    code-summary: "Show the code"
+---
+
+## Infographic image
+
+![Figure 1. Dangers of Los Angeles. Three main takeaways: Latinos are the top victims of crime reports, bodily forces are the top recorded "weapons" used, and hand guns are the most common firearms to encounter.](C:/Users/rosem/Downloads/final_infographic.png){fig-alt="Showing an investigation pinboard. Pinboard is brown, with three main body parts to represent my data. big title in the top middle says 'Dangers of Los Angeles'. I have three visualizations that explores my dataset."}
+
+### Background
+
+This infographic on Los Angeles city crimes from 2020-2024 was created using R and Procreate. This has been a 9 week-long project that has helped me develop more practice with data visualization using R. Three main elements were considered for this project:
+
+-   theme
+-   contextualizing my data
+-   text adjustments within R
+
+While there are many other elements that went into this project, those three main ideas has really fueled the project as a whole.
+
+### Theme
+
+I explored on Los Angeles crime report data. This data interest me due to the darker theme surrounding this dataset. The dataset ranges from relatively benign crimes such as robbery to darker situations such as homicides. Knowing that this dataset consists of darker themes, I wanted to reflect on that accordingly. Knowing that some of the subjects are on the more delicate side, I instead wanted to focus on the general idea of the dataset: what can we take away from it? And from the data exploration I conducted, I have been most intrigued by who the victims are and will most likely deal with in the event of a crime.
+
+### Contextualizing my Data
+
+As mentioned previously,from the data exploration I conducted, I have been most intrigued by who the victims are and will most likely deal with in the event of a crime. To put the project into context, it was somewhat simple, as I was largely interested in counts. My main goal was to find the count of each variable, and find what are the most common crimes, victims, locations, ect. And after compiling several graphs, I decided to focus on the more general ideas such as top weapons, firearms, and victims.
+
+### Text Adjustments
+
+The most time-consuming yet eye-opening part of this project is adjusting and creating this graph in R. Not only that, but I have also learned the importance of reproducible data and the standards of tidy data. One element from ggplot2 that I have improved on significantly is learning how `theme()` and `labs` work well together. I used to prefer python more when it came to data visualization, but after taking this course, I realized that I was wrong and R is actually a great place to make graphs!
+
+### Other key data visualization aspects
+
+-   graphic form: I have explored other graphic forms using this dataset, such as a radar plot! however I realized that line charts are slightly better at visualizing trends when it comes to interpretation (and time).
+
+-   typography: I had fun figuring out the typefont and sizes I would like for my infographic. It took multiple trial and errors to figure out the right font and size.
+
+-   general design: I realized that my idea of using a detective board as my background could be considered a bit too busy or distracting of my data. To mitigate that, I darkened my plot, and highlighted my main plots using lighting.
+
+-   color: I created a color palette when creating my infographic. However due to some time constraints, my graph is not exactly ready for printing, as there are still some more cohesive color schemes to consider (and color blind friendly options too for my older 2 brothers). However I believe that by highlighting the graphs and darkening the rest of the background, it helps with the colors being a bit more cojesive. \## Process
+
+For the libraries I used for my infogrpahic:
+
+```{r packages, message= FALSE, warning=FALSE}
+# setting my chunk options
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+#list of packages
+library(tidyverse) #main use for data wrangling
+library(janitor) #helps with clean names for my variables
+library(lubridate) #need this for my time data. Mostly for wrangling time data
+library(stringr) #this helps with dealing with strings and characters in my data
+library(showtext) #choosing fonts from google fonts
+
+
+font_add_google(name = "Special Elite") #for the typewriter font
+font_add_google(name = "Nosifer") #for the bloody font
+
+showtext_auto() #to render text
+
+
+```
+
+```{r data}
+#reading in my data from my local computer
+la_crimes <- read_csv("C:/Users/rosem/Documents/MEDS/Courses/EDS-240/HW/Juarez-eds240-HW4/data/Crime_Data_from_2020_to_Present_20240131.csv") %>% 
+  clean_names()
+
+```
+
+## Data Wrangling and Processing
+
+```{r data wrangling}
+#==============================================================
+#                 data wrangling
+# =============================================================
+
+#will create a new column that describes the main 5 race categories. for reference:
+#c(B - Black C - Chinese D - Cambodian F - Filipino G - Guamanian H - Hispanic/Latin/Mexican I - American Indian/Alaskan Native J - Japanese K - Korean L - Laotian O - Other P - Pacific Islander S - Samoan U - Hawaiian V - Vietnamese W - White X - Unknown Z - Asian Indian)
+
+asian_countries <-  c('A', 'C', 'D', 'F',"L", 'J', 'K', 'V', 'Z')
+
+
+# Define a named vector mapping the current categories to their full names
+race_names <- c(
+  "A" = "Asian",
+  "B" = "Black",
+  "W" = "White",
+  "H" = "Hispanic",
+  "I" = "Native American/Alaska",
+  "P" = "pacific Islander"
+)
+
+#------------------------
+#   regualar wrangling
+# -----------------------
+
+#creating a cleaned-up version of la_crimes. keeping the name so that i have less names to remember
+
+la_crimes <- la_crimes %>% 
+  #removing zeros in the `vict_age` column, as 0, -1, and -2 indicated that no age was recorded.
+  filter(vict_age > 0 ) %>% 
+  #I want to incllude all values for victim sex, however to first test out my plots, i want to view just male and female for simplicity
+  #
+  #
+  filter(vict_sex %in% c('M', 'F')) %>% 
+  #Asian countries will be agreggated to one.
+  
+
+
+#-----------------------------
+#   asian country aggregation
+#-----------------------------
+
+  #Asian countries will be aggregated to one. using case_when as it will help with selecting and reassigning asian countries to the letter "A" if the list of values i provided above are within asian_countries
+  mutate(race_category = case_when(
+    vict_descent %in% asian_countries ~ "A",
+    TRUE ~ vict_descent  # Keep non-Asian races unchanged, as true will allow for the row that do not have an asian country to remain the same within the new "race_category" column.
+  )) %>% 
+
+  #filter for the top 6 race categories
+  filter(race_category %in% c('B', 'H', 'W', 'I', 'P', 'A')) %>% 
+
+# Rename the categories in the race column
+  mutate(race = case_match(race_category, "B" ~ "Black",
+                           "H" ~ "Hispanic",
+                           "W"~ "White",
+                           "I" ~ "Native American/Alaska",
+                           "P" ~ "Pacific Islanders",
+                           "A" ~ "asian"
+                           ))
+
+
+#====================================
+#     new data frames for plotting
+#====================================
+
+#creating crime description
+crime_desc <- la_crimes %>% 
+  group_by(crm_cd_desc) %>%
+  summarise(count = n()) %>%
+  arrange((desc(count)), .by_group = TRUE) %>% 
+  ungroup()
+
+
+#crime description by sex
+crime_desc_sex <- la_crimes %>% 
+  group_by(crm_cd_desc, vict_sex) %>%
+  summarise(count = n()) %>% 
+  slice_max(order_by = count, n = 10) %>% 
+  group_by(crm_cd_desc) %>% 
+  ungroup()
+
+#creating weapon description
+weap_desc <- la_crimes %>% 
+  group_by(weapon_desc) %>%
+  summarise(count = n()) %>%
+  arrange((desc(count)), .by_group = TRUE) %>% 
+  na.omit() %>% 
+
+#filtering those that are unknown or not physical
+
+  filter(!grepl("UNKNOWN", weapon_desc)) %>% 
+  filter(!grepl("OTHER", weapon_desc)) %>% 
+  filter(!grepl("VERBAL", weapon_desc))
+
+#of those weapons, which ones are guns?
+weap_gun <- weap_desc %>% 
+  filter(grepl("GUN", weapon_desc) | grepl("PISTOL", weapon_desc) | grepl("RIFLE", weapon_desc))
+  
+
+```
+
+## plotting the plots
+
+```{r}
+top_5_weap <- weap_desc %>% 
+  slice(1:5)%>% 
+  ggplot( aes(x = fct_reorder(weapon_desc, count), y = count)) +
+  geom_col(fill = "black") +
+  geom_text(aes(label = count),family = "Special Elite", hjust = -.2, color = "red4", size = 9) +
+  coord_flip() +
+  theme_classic()+
+  labs(title = "You Will Likely Encounter Bodily Forces than Anything Else"
+       
+       ) +
+  scale_y_continuous(limits = c(0, 200000)) +
+  theme(axis.title.y = element_blank(),
+        axis.line.y = element_blank(), 
+        axis.ticks.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.line.x = element_blank(), 
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(size = 15, family = "Special Elite"),
+        plot.title = element_text(size = 36, family = "Special Elite", face = "bold", color = "red4"),
+        plot.background = element_blank(),
+        panel.background = element_blank(),
+        
+        )
+
+top_5_weap
+```
+
+```{r}
+
+
+font_add_google(name = "Special Elite") #for the typewriter font
+font_add_google(name = "Nosifer") #for the bloody font
+
+#I want to record the top 5 crime reports involving guns
+gun_graph <- weap_gun %>% 
+  slice(1:5)%>% 
+  ggplot( aes(x = fct_reorder(weapon_desc, count), y = count)) +
+  geom_col(fill = "black") +
+  geom_text(aes(label = count),family = "Special Elite", hjust = -.2, color = "red4", size = 9) +
+  coord_flip() +
+  theme_classic()+
+  labs(title = "However If You Encounter Firearms, Watch Out for Handguns"#,
+       #subtitle = "From 2020-2024, There were 589,000 individual crime reports. From those reports, 24,000 involve firearm weapons."
+       ) +
+  scale_y_continuous(limits = c(0, 20000)) +
+  theme(axis.title.y = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.line.y = element_blank(), 
+        axis.line.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        plot.title = element_text(family = "Nosifer",
+                                  size = 35, 
+                                  color = "red4",
+                                  hjust = 1),
+        axis.text = element_text(family = "Special Elite", 
+                                 size = 15),
+        axis.title = element_text(family = "Special Elite"),
+        plot.margin = margin(1,.5,.5,.5, "cm"),
+        plot.background = element_blank(),
+        panel.background = element_blank()
+        
+        
+       # plot.background = element_rect(fill = "#dbb69c"),
+       # panel.background = element_rect(fill = "#dbb69c")
+        ) 
+gun_graph
+
+```
+
+```{r}
+# I am reporting on the top 5 race victims in the crime data
+race_pie <- la_crimes %>%
+  count(race) %>%
+  ggplot() +
+  ggforce::geom_arc_bar(
+    aes(x0 = 0, y0 = 0, r0 = 0.8, r = 1, amount = n, fill = race),
+   stat = "pie") +
+  theme_void()+
+
+  scale_fill_manual(values= c("#cad2c5", "#84a98c", "#52796f", "#354f52", "#0c1113", "#2f3e46")) + 
+  labs(title = "Careful if you are Latino:",
+       subtitle = "you are the top victim of crime reports",
+       fill = "") +
+  theme(
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    axis.line = element_blank(),
+    plot.background = element_blank(),
+    legend.text = element_text(size=25, family = "Special Elite", color = "red4"),
+    legend.position = c(0.55,0.52),
+    plot.title = element_text(size = 40, family = "Special Elite", color = "red4"),
+    plot.subtitle = element_text(size = 25, family = "Special Elite", color = "red4")
+    
+    )
+
+race_pie
+
+
+```
