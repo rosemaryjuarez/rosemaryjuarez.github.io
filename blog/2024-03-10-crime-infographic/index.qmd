@@ -13,7 +13,7 @@ format:
 
 ## Infographic image
 
-![Figure 1. Dangers of Los Angeles. Three main takeaways: Latinos are the top victims of crime reports, bodily forces are the top recorded "weapons" used, and hand guns are the most common firearms to encounter.](C:/Users/rosem/Downloads/final_infographic.png){fig-alt="Showing an investigation pinboard. Pinboard is brown, with three main body parts to represent my data. big title in the top middle says 'Dangers of Los Angeles'. I have three visualizations that explores my dataset."}
+![Figure 1. Dangers of Los Angeles. Three main takeaways: Latinos are the top victims of crime reports, bodily forces are the top recorded "weapons" used, and hand guns are the most common firearms to encounter.](C:/Users/rosem/Downloads/infographic_crime.png){fig-alt="Showing an investigation pinboard. Pinboard is brown, with three main body parts to represent my data. big title in the top middle says 'Dangers of Los Angeles'. I have three visualizations that explores my dataset. Top left shows a donut plot discovering Hispanics having the highest victim report count. Top Right shows a bar plot finding that handguns are the most common firearm against a victim. Bottom plot shows that bodiliy force is the most common weapon against a victim."}
 
 ### Background
 
@@ -59,7 +59,7 @@ library(janitor) #helps with clean names for my variables
 library(lubridate) #need this for my time data. Mostly for wrangling time data
 library(stringr) #this helps with dealing with strings and characters in my data
 library(showtext) #choosing fonts from google fonts
-
+library(scales) #for labeling my axis and texts
 
 font_add_google(name = "Special Elite") #for the typewriter font
 font_add_google(name = "Nosifer") #for the bloody font
@@ -181,15 +181,16 @@ weap_gun <- weap_desc %>%
 
 ## plotting the plots
 
-```{r}
+```{r, fig.height=3, fig.width=6}
+#creating the top weapons used against a victim
 top_5_weap <- weap_desc %>% 
   slice(1:5)%>% 
   ggplot( aes(x = fct_reorder(weapon_desc, count), y = count)) +
   geom_col(fill = "black") +
-  geom_text(aes(label = count),family = "Special Elite", hjust = -.2, color = "red4", size = 9) +
+  geom_text(aes(label = scales::comma(count)),family = "Special Elite", hjust = -.2, color = "red4", size = 9) +
   coord_flip() +
   theme_classic()+
-  labs(title = "You Will Likely Encounter Bodily Forces than Anything Else"
+  labs(title = "71% of All Crime Reports Site Bodily Force as the Most Common Weapon "
        
        ) +
   scale_y_continuous(limits = c(0, 200000)) +
@@ -200,8 +201,8 @@ top_5_weap <- weap_desc %>%
         axis.line.x = element_blank(), 
         axis.ticks.x = element_blank(),
         axis.text.x = element_blank(),
-        axis.text.y = element_text(size = 15, family = "Special Elite"),
-        plot.title = element_text(size = 36, family = "Special Elite", face = "bold", color = "red4"),
+        axis.text.y = element_text(size = 19, family = "Special Elite", color = "red4"),
+        plot.title = element_text(size = 36, family = "Special Elite", face = "bold", color = "red4", hjust = 1.1),
         plot.background = element_blank(),
         panel.background = element_blank(),
         
@@ -210,22 +211,16 @@ top_5_weap <- weap_desc %>%
 top_5_weap
 ```
 
-```{r}
-
-
-font_add_google(name = "Special Elite") #for the typewriter font
-font_add_google(name = "Nosifer") #for the bloody font
-
+```{r, fig.height=3, fig.width=6}
 #I want to record the top 5 crime reports involving guns
 gun_graph <- weap_gun %>% 
   slice(1:5)%>% 
   ggplot( aes(x = fct_reorder(weapon_desc, count), y = count)) +
   geom_col(fill = "black") +
-  geom_text(aes(label = count),family = "Special Elite", hjust = -.2, color = "red4", size = 9) +
+  geom_text(aes(label = scales::comma(count)),family = "Special Elite", hjust = -.2, color = "red4", size = 9) +
   coord_flip() +
   theme_classic()+
-  labs(title = "However If You Encounter Firearms, Watch Out for Handguns"#,
-       #subtitle = "From 2020-2024, There were 589,000 individual crime reports. From those reports, 24,000 involve firearm weapons."
+  labs(title = "Handguns Account for 62% of Firearm Reported in Los Angeles"
        ) +
   scale_y_continuous(limits = c(0, 20000)) +
   theme(axis.title.y = element_blank(),
@@ -235,26 +230,24 @@ gun_graph <- weap_gun %>%
         axis.line.x = element_blank(),
         axis.ticks.y = element_blank(),
         axis.ticks.x = element_blank(),
-        plot.title = element_text(family = "Nosifer",
+        plot.title = element_text(family = "Special Elite",
                                   size = 35, 
                                   color = "red4",
-                                  hjust = 1),
+                                  hjust = 1.9),
         axis.text = element_text(family = "Special Elite", 
-                                 size = 15),
+                                 size = 19, 
+                                 color = "red4"),
         axis.title = element_text(family = "Special Elite"),
         plot.margin = margin(1,.5,.5,.5, "cm"),
         plot.background = element_blank(),
         panel.background = element_blank()
         
-        
-       # plot.background = element_rect(fill = "#dbb69c"),
-       # panel.background = element_rect(fill = "#dbb69c")
-        ) 
+        )
 gun_graph
 
 ```
 
-```{r}
+```{r, fig.height=3, fig.width=3}
 # I am reporting on the top 5 race victims in the crime data
 race_pie <- la_crimes %>%
   count(race) %>%
